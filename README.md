@@ -1,6 +1,8 @@
 # Intro Computer Graphics WS 2023/24
 
-Course material for lecture 'Introduction to Computer Graphics'. The platform is WebGL, Javascript and three.js, all of which should run on any reasonably recent web browser.
+Course material for lecture 'Introduction to Computer Graphics'. The platform is WebGL,
+Javascript and [three.js](https://threejs.org), all of which should run on any reasonably
+recent web browser.
 
 1. [Contents of the course](#1-contents-of-the-course)
 2. [Software used in the course](#2-software-used-in-the-course)
