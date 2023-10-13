@@ -1,6 +1,6 @@
 # Chapter 2: Vectors and Matrices
 
-Link to the videos of this chapter: coming soon...
+Link to the videos of this chapter: see Moodle-Page
 
 Recommended reading in [Immersive linear algebra](http://immersivemath.com/ila/index.html):
 
@@ -11,4 +11,5 @@ Recommended reading in [Immersive linear algebra](http://immersivemath.com/ila/i
 
 Further Material:
 
-  * Cem Yuksels excellent video series on computer graphics: [Math Background](https://www.youtube.com/watch?v=DnkU4_DttGE&list=PLplnkTzzqsZTfYh4UbhLGpI5kGd5oW_Hh&index=3)
+  * Cem Yuksels video series on computer graphics: [Math Background](https://www.youtube.com/watch?v=DnkU4_DttGE&list=PLplnkTzzqsZTfYh4UbhLGpI5kGd5oW_Hh&index=3)
+  * 3Blue1Brown (excellent Maths video series) on [Linear Algebra](https://www.3blue1brown.com/topics/linear-algebra)
