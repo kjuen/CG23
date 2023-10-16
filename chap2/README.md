@@ -1,6 +1,6 @@
 # Chapter 2: Vectors and Matrices
 
-Link to the videos of this chapter: see Moodle-Page
+Videos of this chapter: see Moodle-Page
 
 Recommended reading in [Immersive linear algebra](http://immersivemath.com/ila/index.html):
 
