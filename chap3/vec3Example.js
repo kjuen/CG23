@@ -1,6 +1,6 @@
 // Example: using the three.js library as a module
 
-import * as THREE from "../lib/build/three.module.min.js";
+import * as THREE from "three";
 
 const v1 = new THREE.Vector3(1, 2, 3);
 v1.multiplyScalar(3);   // in place multiplication
