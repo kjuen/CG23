@@ -8,15 +8,40 @@
         <title>Intro to Computer Graphics</title>
     </head>
     <body>
+        <!-- <canvas id="mycanvas"
+             width="600" height="400"/> -->
 
-        <!--  Library files: comment in or out script tags as needed: -->
-        <script type="text/javascript" src="lib/build/three.min.js"> </script>
-        <script type="text/javascript" src="chap3/vec3Example1.js"> </script>
+
+        <!--         This is to help browsers not yet supporting import maps -->
+        <!-- <script async type="text/javascript" src="lib/es-module-shims.js"></script> -->
+
+        <script type="importmap">
+         {"imports": {
+           "three": "./lib/three.module.min.js",
+           "three/addons/": "./lib/addons/"
+         }}
+        </script>
+
+
+        <!-- Just in case you want to load the lib from the internet -->
+        <!-- <script type="importmap">
+             {
+             "imports": {
+             "three": "https://unpkg.com/three@0.157.0/build/three.module.js",
+             "three/addons/": "https://unpkg.com/three@0.157.0/examples/jsm/"
+             }
+             }
+             </script> -->
+
+        <!-- Loading of files the old way: -->
+        <script type="text/javascript" src="chap4/functionParameterDemo.js"> </script>
+
+
 
         <!--
              Load the module version of the code like this (no other script tags required)
              This approach of file loding requires a web server, thoug!
         -->
-        <!-- <script type="module" src="chap3/vec3Example2.js"> </script> -->
+        <script type="module" src="chap3/vec3Example.js"> </script>
     </body>
 </html>
