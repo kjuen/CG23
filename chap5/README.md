@@ -1,6 +1,6 @@
 # Chapter 5: Geometries and Coordinate Systems
 
-Link to the videos of this chapter in the HAW cloud: [https://cloud.haw-hamburg.de/index.php/s/UAjmAQQgRiyyD1Y](https://cloud.haw-hamburg.de/index.php/s/UAjmAQQgRiyyD1Y)
+Videos of this chapter: see Moodle-Page
 
 The solutions to exercises 1 and 3 can be found in the `house` directory.
 
