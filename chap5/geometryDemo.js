@@ -43,7 +43,7 @@ geo.setFromPoints([
 ]);
 
 const obj1 = new THREE.Mesh(geo, mat);
-scene.add(obj1);
+// scene.add(obj1);
 
 // Version 2
 const indexGeo = new THREE.BufferGeometry();
@@ -52,7 +52,7 @@ const faceIndices = [0, 2, 1,
   0, 2, 3];
 indexGeo.setIndex(faceIndices);
 const obj2 = new THREE.Mesh(indexGeo, mat);
-scene.add(obj2);
+// scene.add(obj2);
 
 
 // Tetrahedron
@@ -65,8 +65,8 @@ tetVertices[3] = new THREE.Vector3(0.5, 0.5, 0.5);
 tetGeo.setFromPoints([
   // Face 0
   tetVertices[0],
-  tetVertices[1],
   tetVertices[2],
+  tetVertices[1],
   // Face 1
   tetVertices[0],
   tetVertices[3],
@@ -82,8 +82,10 @@ tetGeo.setFromPoints([
 ]);
 const obj3 = new THREE.Mesh(tetGeo, mat);
 scene.add(obj3);
-
-
+window.obj3 = obj3;    // just for inspection in the console
+obj3.position.x = 1; 
+obj3.rotation.z = 1; 
+obj3.add(new THREE.AxesHelper(1.5));
 
 
 // Render the scene
