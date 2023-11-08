@@ -1,7 +1,7 @@
+// Initialize WebGL renderer
 import * as THREE from "three"
 import {TrackballControls} from "three/addons/controls/TrackballControls.js";
 
-// Initialize WebGL renderer
 const canvas = document.getElementById("mycanvas");
 const renderer = new THREE.WebGLRenderer({canvas, antialias:true});
 renderer.setClearColor('#eeeeee');  // background color
@@ -24,19 +24,6 @@ const light = new THREE.PointLight();
 light.position.set(5,0,5);
 scene.add(light);
 
-// The wall
-const wallDist = 5;
-const wallThickness = 0.2;
-const wall = new THREE.Mesh(new THREE.BoxGeometry(3,2,wallThickness),
-                            new THREE.MeshStandardMaterial({color:'maroon',
-                                                            metalness:0.1,
-                                                            roughness:0.9}));
-wall.position.x = wallDist + 1/2*wallThickness;
-wall.rotation.y = Math.PI/2;
-scene.add(wall);
-
-
-
 // The moving ball
 const ballRadius = 1;
 const mat = new THREE.MeshStandardMaterial({color:'#afeeee',
@@ -45,22 +32,46 @@ const mat = new THREE.MeshStandardMaterial({color:'#afeeee',
 
 const ball = new THREE.Mesh(new THREE.SphereGeometry(ballRadius, 32,16), mat);
 scene.add(ball);
+let speed = new THREE.Vector3(0,0,0);
+const speedValue = 2;
 
-let speed = new THREE.Vector3(1,0,0);
+
+function myCallback(event) {
+
+  // event.preventDefault();
+  console.log(event.keyCode);
+  if(event.keyCode===37) {   // left arrow key
+    speed.x = -speedValue;
+  }
+  if(event.keyCode===39) {   // right arrow key
+    speed.x = speedValue;
+  }
+
+  // Exercise 2: slide 18
+  if(event.keyCode===38) {   // up arrow key
+    speed.y = speedValue;
+  }
+  if(event.keyCode===40) {   // down arrow key
+    speed.y = -speedValue;
+  }
+
+}
+document.addEventListener("keydown", myCallback);
+// use anonymous function as callback
+document.addEventListener("keyup", function() {
+  speed.set(0,0,0);
+});
+
+
 
 // Render the scene
 const clock = new THREE.Clock();
 function render() {
   requestAnimationFrame(render);
 
-  const h = clock.getDelta();   // time increment in seconds
-  const t = clock.getElapsedTime();   // overall time in seconds
+  const h = clock.getDelta();
 
   ball.position.add(speed.clone().multiplyScalar(h));
-
-  if(ball.position.x + ballRadius > wallDist) {
-    speed.x = - Math.abs(speed.x);
-  }
 
   controls.update();
   renderer.render(scene, camera);
