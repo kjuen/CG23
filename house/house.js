@@ -38,16 +38,18 @@ ground.rotation.x = -Math.PI/2;
 scene.add(ground);
 
 // Build the house
-const house = new THREE.Object3D(); 
+const house = new THREE.Object3D();
 scene.add(house);
 // window.house = house;
-house.position.x = 2; 
+// house.position.x = 2;
 
 const width = 1;
 const len = 2;
 const height = 0.8;
 
 const bodyMat = new THREE.MeshPhongMaterial({color: "gray"} );
+bodyMat.transparent = false;
+bodyMat.opacity = 0.5;
 
 const bodyGeo = new THREE.BoxGeometry(width,height,len);
 const body = new THREE.Mesh(bodyGeo, bodyMat);
@@ -61,6 +63,35 @@ const roof = new THREE.Mesh(roofGeo, roofMat);
 
 roof.position.y = height;
 house.add(roof);
+
+// Add windows
+const windowGeo = new THREE.BoxGeometry(height/3, len/10, 0.01);
+// shiny windows
+const windowMat = new THREE.MeshPhongMaterial( { color: 'black',
+                                                 specular:"white",
+                                                 shininess:50} );
+const win1 = new THREE.Mesh(windowGeo, windowMat);
+house.add(win1);
+win1.rotation.z = Math.PI/2;
+win1.rotation.y = Math.PI/2;
+win1.position.x = width/2;
+win1.position.y = height/2;
+win1.position.z = len/4;
+const win2 = win1.clone();
+win2.position.z = -len/4;
+house.add(win2);
+const win3 = win1.clone();
+win3.position.x = -width/2;
+house.add(win3);
+const win4 = win2.clone();
+win4.position.x = -width/2;
+house.add(win4);
+const win5 = new THREE.Mesh(windowGeo, windowMat);
+win5.rotation.z = Math.PI/2;
+win5.position.z = len/2;
+win5.position.y = height/2;
+house.add(win5);
+
 
 
 // Render loop
