@@ -40,6 +40,7 @@ const ball = new THREE.Mesh(new THREE.SphereGeometry(ballRadius, 8,4),
                             new THREE.MeshBasicMaterial( {color: 0x0000ff,
                                                           wireframeLinewidth:2,
                                                           wireframe:true}));
+ball.matrixAutoUpdate = false;
 scene.add(ball);
 
 // speed and current position of translational motion
@@ -67,7 +68,13 @@ function render() {
 
   // update position of ball:
   ballPos.add(ballSpeed.clone().multiplyScalar(h));
-  ball.position.copy(ballPos);
+
+  const om = ballSpeed.length() / ballRadius;
+  const axis = planeNormal.clone().cross(ballSpeed).normalize();
+
+  const dR = new THREE.Matrix4().makeRotationAxis(axis, om*h);
+  ball.matrix.premultiply(dR);
+  ball.matrix.setPosition(ballPos);
 
   controls.update();
   renderer.render(scene, camera);
