@@ -1,6 +1,4 @@
-import * as THREE from "three"
-import {TrackballControls} from "three/addons/controls/TrackballControls.js";
-
+// Solution to exercise on slide 50, chapter 4
 
 // Initialize webGL
 const canvas = document.getElementById("mycanvas");
@@ -29,13 +27,26 @@ const speed = new THREE.Vector3(-2,0,0);
 // Draw everything
 const axes = new THREE.AxesHelper();
 scene.add(axes);
-const controls = new TrackballControls( camera, canvas );
+const controls = new THREE.TrackballControls( camera, canvas );
 const clock = new THREE.Clock();
 function render() {
   requestAnimationFrame(render);
 
   const h = clock.getDelta();
   const t = clock.getElapsedTime();
+
+  // calculate position in camera space
+  const posInCam = obj.position.clone();
+  posInCam.applyMatrix4(camera.matrixWorldInverse);
+  const zc = Math.abs(posInCam.z);  // make sure zc is positive
+  const xc = posInCam.x;
+  // size of frustum at this zc-value
+  const hc = 2 * zc * Math.tan(Math.PI/180*camera.fov/2);
+  const wc = camera.aspect * hc;
+
+  // simple check if ball hits frustum
+  if(xc >= wc/2-radius) speed.x = -Math.abs(speed.x);
+  if(xc <= -wc/2+radius) speed.x = Math.abs(speed.x);
 
   // move ball
   obj.position.add(speed.clone().multiplyScalar(h));
