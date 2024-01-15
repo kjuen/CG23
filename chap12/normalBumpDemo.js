@@ -19,6 +19,7 @@ camera.lookAt(scene.position);
 const light = new THREE.PointLight();
 light.position.set(20,20,20);
 scene.add(light);
+light.intensity = 2000;
 const b = new THREE.Mesh(new THREE.SphereGeometry(1),
                          new THREE.MeshBasicMaterial({color:"yellow"}));
 b.position.copy(light.position);
@@ -32,12 +33,12 @@ const txtLoader = new THREE.TextureLoader();
 // image from http://cpetry.github.io/NormalMap-Online/
 const normTxt = txtLoader.load('chap12/NormalMap.png');
 const box = new THREE.Mesh(new THREE.BoxGeometry(8, 8, 8),
-                             new THREE.MeshPhongMaterial({color:'#aa67ab',
-                                                          side:THREE.DoubleSide,
-                                                          normalMap:normTxt,
-                                                          wireframe: false,
-                                                          specular:'#aa67ab',
-                                                          shininess:10}));
+                           new THREE.MeshPhongMaterial({color:'#aa67ab',
+                                                        side:THREE.DoubleSide,
+                                                        // normalMap:normTxt,
+                                                        wireframe: false,
+                                                        specular:'#aa67ab',
+                                                        shininess:10}));
 scene.add(box);
 
 

@@ -17,6 +17,7 @@ camera.position.z = 4;
 // Add some light
 const light = new THREE.SpotLight();
 light.position.set(10,10,10);
+light.intensity = 1000;
 scene.add(light);
 scene.add(new THREE.AmbientLight('#707070'));
 

@@ -22,7 +22,7 @@ camera.position.z = 6;
 const txt = new THREE.TextureLoader().load('chap12/Schraffur.jpg');
 const txt2 = new THREE.TextureLoader().load('chap12/Brick.jpg');
 const uvGrid = new THREE.TextureLoader().load('chap12/uv_grid_opengl.jpg');
-const geo = myPlaneHouseGeo();
+const geo = myPlaneGeo();
 const mat = new THREE.MeshBasicMaterial({color:"#ffffff",
                                         map:txt});
 const mat2 = new THREE.MeshBasicMaterial({color:"#ffffff", map:txt2});
@@ -106,7 +106,5 @@ function myPlaneHouseGeo() {
   geo.setFromPoints([houseVertices[0], houseVertices[2], houseVertices[3],
                      houseVertices[0], houseVertices[3], houseVertices[4],
                      houseVertices[0], houseVertices[1], houseVertices[2]]);
-
-
   return geo;
 }

@@ -24,7 +24,9 @@ const ambientLight = new THREE.AmbientLight('#404040');
 scene.add(ambientLight);
 const spotLight = new THREE.SpotLight('#ffffff');
 spotLight.position.set( 15,15,15 );
+// spotLight.intensity = 20;
 scene.add(spotLight);
+
 
 const txtLoader = new THREE.TextureLoader();
 
@@ -85,7 +87,7 @@ controls.zoomSpeed = 1/2;
 function render() {
   requestAnimationFrame(render);
 
-  earth.rotation.y += 0.0002;
+  earth.rotation.y  += 0.0002;
   clouds.rotation.y += 0.0001;
 
   skyBox.position.copy(camera.position);

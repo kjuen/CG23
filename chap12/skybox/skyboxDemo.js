@@ -24,6 +24,7 @@ const ambientLight = new THREE.AmbientLight('#404040');
 scene.add(ambientLight);
 
 const spotLight = new THREE.SpotLight('#aaaaaa');
+spotLight.intensity = 200;
 spotLight.position.set( 15,15,15 );
 scene.add(spotLight);
 
