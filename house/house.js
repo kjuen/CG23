@@ -2,7 +2,7 @@
 
 import * as THREE from "three";
 import {TrackballControls} from "three/addons/controls/TrackballControls.js";
-// import {VertexNormalsHelper} from "three/addons/helpers/VertexNormalsHelper.js";
+import {VertexNormalsHelper} from "three/addons/helpers/VertexNormalsHelper.js";
 
 
 
@@ -16,7 +16,7 @@ renderer.shadowMap.enabled=true;
 const scene = new THREE.Scene();
 // show global coordinate system
 const axesHelper = new THREE.AxesHelper(2);
-scene.add( axesHelper );
+// scene.add( axesHelper );
 
 // Add a camera
 const camera = new THREE.PerspectiveCamera( 75, canvas.width / canvas.height, 0.1, 500 );
@@ -32,7 +32,7 @@ scene.add(ambientLight);
 
 const light = new THREE.SpotLight(0xffffff);
 scene.add(light);
-light.intensity=1500;
+light.intensity=150;
 light.position.set(15,5,4);
 light.castShadow = true;
 light.shadow.camera.near = 0.1;
@@ -80,8 +80,8 @@ body.position.y = height / 2 + 0.0001;
 house.add(body);
 
 // Add the roof to the house
-const roofGeo = createIndexedRoofGeo(1.1*len,1.1*width,0.5*height);
-// const roofGeo = createRoofGeo(1.1*len,1.1*width,0.5*height);
+// const roofGeo = createIndexedRoofGeo(1.1*len,1.1*width,0.5*height);
+const roofGeo = createRoofGeo(1.1*len,1.1*width,0.5*height);
 window.roofGeo = roofGeo;
 const roofMat = new THREE.MeshPhongMaterial({color: 0xff4444});
 const roof = new THREE.Mesh(roofGeo, roofMat);
@@ -91,6 +91,8 @@ roof.position.y = height;
 roof.castShadow = true;
 house.add(roof);
 
+// const roofNormalsHelper = new VertexNormalsHelper(roof);
+// house.add(roofNormalsHelper);
 // Add windows
 const windowGeo = new THREE.BoxGeometry(height/3, len/10, 0.01);
 // shiny windows
@@ -156,6 +158,8 @@ function createIndexedRoofGeo(l, w, h) {
   geo.setFromPoints(vertices);
   geo.setIndex(indices);
 
+  geo.computeVertexNormals();
+
   return geo;
 }
 
@@ -212,6 +216,8 @@ function createRoofGeo(l, w, h) {
     vertices[1],
     vertices[5],
     vertices[4]]);
+
+  geo.computeVertexNormals();
 
   return geo;
 }
